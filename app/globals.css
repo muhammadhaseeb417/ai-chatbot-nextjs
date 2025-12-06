@@ -1,62 +1,411 @@
 @import "tailwindcss";
 
-/* Dark theme color palette for modern, professional look */
+/* -------------------------------------------------
+   Ultra-Minimal Dark UI Theme — Professional
+--------------------------------------------------- */
+
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --card-bg: #1a1a1a;
-  --border: #2a2a2a;
-  --input-bg: #161616;
+  --background: #09090b;
+  --surface: #0f0f11;
+  --surface-2: #18181b;
+  --surface-3: #1f1f23;
+
+  --foreground: #fafafa;
+  --foreground-muted: #a1a1aa;
+  --foreground-subtle: #71717a;
+
+  --border: #27272a;
+  --border-subtle: #1f1f23;
+
+  --input-bg: #0f0f11;
+  --input-border: #27272a;
+
   --primary: #3b82f6;
   --primary-hover: #2563eb;
-  --secondary: #1e293b;
+  --primary-muted: #60a5fa;
+
   --accent: #8b5cf6;
   --success: #10b981;
   --error: #ef4444;
   --warning: #f59e0b;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* -------------------------------------------------
+   BASE
+--------------------------------------------------- */
+
+html {
+  background-color: var(--background);
+  scroll-behavior: smooth;
 }
 
-/* Force dark theme - remove light theme support for consistency */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: -0.011em;
 }
 
-/* Smooth transitions for interactive elements */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+}
+
 * {
-  transition: background-color 0.2s ease, border-color 0.2s ease,
-    color 0.2s ease;
+  box-sizing: border-box;
 }
 
-/* Custom scrollbar for dark theme */
+/* Smooth transitions for theme-related properties */
+*,
+*::before,
+*::after {
+  transition: background-color var(--transition),
+              border-color var(--transition),
+              color var(--transition),
+              opacity var(--transition);
+}
+
+/* Scrollbars - Ultra minimal */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--border);
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a3a3a;
+  background: var(--foreground-subtle);
 }
 
-/* Selection color */
+/* Selection */
 ::selection {
   background: var(--primary);
   color: white;
+}
+
+::-moz-selection {
+  background: var(--primary);
+  color: white;
+}
+
+/* -------------------------------------------------
+   INPUTS
+--------------------------------------------------- */
+
+input,
+textarea,
+select {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  color: var(--foreground);
+  font-size: 0.9375rem;
+  font-family: inherit;
+  width: 100%;
+  font-weight: 400;
+  letter-spacing: -0.011em;
+}
+
+@media (max-width: 640px) {
+  input,
+  textarea,
+  select {
+    padding: 0.7rem 0.95rem;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--foreground-subtle);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--background);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08);
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* -------------------------------------------------
+   BUTTONS
+--------------------------------------------------- */
+
+button {
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  border: none;
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: -0.011em;
+  outline: none;
+}
+
+button:focus-visible {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 0.7rem 1.25rem;
+  font-size: 0.9375rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 640px) {
+  .btn-primary {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.9rem;
+  }
+}
+
+.btn-secondary {
+  background: var(--surface-2);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  padding: 0.7rem 1.25rem;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--surface-3);
+  border-color: var(--primary-muted);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* -------------------------------------------------
+   CARDS
+--------------------------------------------------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+/* -------------------------------------------------
+   CHAT BUBBLES
+--------------------------------------------------- */
+
+.chat-bubble {
+  max-width: 85%;
+  padding: 1rem 1.25rem;
+  word-wrap: break-word;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 640px) {
+  .chat-bubble {
+    max-width: 90%;
+    padding: 0.875rem 1.1rem;
+  }
+}
+
+.chat-user {
+  background: var(--primary);
+  color: white;
+  border-radius: var(--radius);
+  border-bottom-right-radius: 4px;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.chat-ai {
+  background: var(--surface-2);
+  color: var(--foreground);
+  border-radius: var(--radius);
+  border-bottom-left-radius: 4px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .chat-user,
+  .chat-ai {
+    font-size: 0.875rem;
+  }
+}
+
+/* -------------------------------------------------
+   ANIMATIONS
+--------------------------------------------------- */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.delay-75 {
+  animation-delay: 75ms;
+}
+
+.delay-150 {
+  animation-delay: 150ms;
+}
+
+/* -------------------------------------------------
+   UTILITY CLASSES
+--------------------------------------------------- */
+
+.shadow-soft {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* -------------------------------------------------
+   FOCUS STYLES
+--------------------------------------------------- */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------------
+   CODE BLOCKS
+--------------------------------------------------- */
+
+pre,
+code {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Menlo', monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+code {
+  padding: 0.25rem 0.5rem;
+}
+
+/* -------------------------------------------------
+   DIALOG
+--------------------------------------------------- */
+
+dialog {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+/* -------------------------------------------------
+   ACCESSIBILITY
+--------------------------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

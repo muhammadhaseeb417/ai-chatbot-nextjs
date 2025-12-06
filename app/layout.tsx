@@ -1,38 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google"; // Switched to Inter
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Inter is widely considered the standard for modern "Pro" UI
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "AI Chatbot - Powered by Gemini",
+  title: "AI Chatbot",
   description: "Secure AI chatbot with advanced conversational capabilities",
-  keywords: "AI, chatbot, Gemini, artificial intelligence, conversation",
-  authors: [{ name: "Your Name" }],
-  viewport: "width=device-width, initial-scale=1",
-  themeColor: "#0a0a0a",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+  themeColor: "#09090b",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">
-      <head>
-        <meta name="color-scheme" content="dark" />
-      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-white min-h-screen`}
+        className={`${inter.variable} bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen flex flex-col`}
       >
         {children}
       </body>
