@@ -38,6 +38,7 @@ A production-ready, enterprise-grade AI chatbot application built with Next.js 1
 ## ✨ Features
 
 ### 🔐 **Enterprise-Grade Security**
+
 - ✅ **Email verification required** for all users
 - ✅ **Server-side rate limiting** (5 requests/day per user)
 - ✅ **Row-Level Security (RLS)** in database
@@ -46,18 +47,21 @@ A production-ready, enterprise-grade AI chatbot application built with Next.js 1
 - ✅ **SQL injection prevention** via parameterized queries
 
 ### 🤖 **AI-Powered Chat**
+
 - ✅ Powered by **Meta Llama 3.2** (3B parameters)
 - ✅ Real-time conversational AI
 - ✅ Context-aware responses
 - ✅ Fast response times (<2 seconds)
 
 ### 👤 **User Management**
+
 - ✅ Secure email/password authentication
 - ✅ Email verification workflow
 - ✅ Session management with auto-refresh
 - ✅ Persistent user sessions
 
 ### 🎨 **Modern UI/UX**
+
 - ✅ Dark theme with high contrast
 - ✅ Responsive design (mobile-first)
 - ✅ Smooth animations and transitions
@@ -65,6 +69,7 @@ A production-ready, enterprise-grade AI chatbot application built with Next.js 1
 - ✅ Real-time message updates
 
 ### 📊 **Rate Limiting & Monitoring**
+
 - ✅ Daily request quota enforcement
 - ✅ Real-time remaining request display
 - ✅ Automatic reset at midnight UTC
@@ -75,28 +80,33 @@ A production-ready, enterprise-grade AI chatbot application built with Next.js 1
 ## 🛠️ Tech Stack
 
 ### **Frontend**
+
 - **Next.js 15** - React framework with App Router
 - **TypeScript** - Type-safe development
 - **Tailwind CSS** - Utility-first styling
 - **React Hooks** - State management
 
 ### **Backend**
+
 - **Next.js API Routes** - Serverless functions
 - **Supabase** - Authentication & PostgreSQL database
 - **OpenRouter** - AI model gateway
 - **Edge Functions** - Low-latency API responses
 
 ### **Database**
+
 - **PostgreSQL** (via Supabase)
 - **Row-Level Security (RLS)**
 - **Automated backups**
 
 ### **Deployment & Hosting**
+
 - **Netlify** - Frontend hosting & serverless functions
 - **Supabase** - Database & authentication
 - **OpenRouter** - AI inference
 
 ### **Security**
+
 - **Supabase Auth** - JWT-based authentication
 - **bcrypt** - Password hashing (via Supabase)
 - **Server-side validation** - Input sanitization
@@ -143,6 +153,7 @@ A production-ready, enterprise-grade AI chatbot application built with Next.js 1
 ## 🔒 Security Features
 
 ### **1. Authentication & Authorization**
+
 ```typescript
 // Multi-layer security checks
 ✓ Middleware (route protection)
@@ -152,12 +163,14 @@ A production-ready, enterprise-grade AI chatbot application built with Next.js 1
 ```
 
 ### **2. Rate Limiting**
+
 - **Server-side enforcement** (cannot be bypassed)
 - **Database-backed** (not cookies/localStorage)
 - **Per-user tracking** (isolated by user ID)
 - **Automatic reset** (daily at midnight UTC)
 
 ### **3. API Security**
+
 ```typescript
 // API keys never exposed
 ✓ Server-only environment variables
@@ -167,6 +180,7 @@ A production-ready, enterprise-grade AI chatbot application built with Next.js 1
 ```
 
 ### **4. Database Security**
+
 ```sql
 -- Row-Level Security policies
 ✓ Users can only access their own data
@@ -180,6 +194,7 @@ A production-ready, enterprise-grade AI chatbot application built with Next.js 1
 ## 🚀 Getting Started
 
 ### **Prerequisites**
+
 - Node.js 18+ and npm
 - Supabase account (free tier)
 - OpenRouter account (free tier)
@@ -188,39 +203,46 @@ A production-ready, enterprise-grade AI chatbot application built with Next.js 1
 ### **Installation**
 
 1. **Clone the repository**
+
 ```bash
-git clone https://github.com/yourusername/ai-chatbot.git
-cd ai-chatbot
+git clone https://github.com/muhammadhaseeb417/ai-chatbot-nextjs.git
+cd ai-chatbot-nextjs
 ```
 
 2. **Install dependencies**
+
 ```bash
 npm install
 ```
 
 3. **Set up Supabase**
+
 - Create a new project at [supabase.com](https://supabase.com)
 - Run the SQL schema (see `docs/database-setup.sql`)
 - Enable email authentication
 - Copy your project URL and keys
 
 4. **Set up OpenRouter**
+
 - Create account at [openrouter.ai](https://openrouter.ai)
 - Generate API key (no credit card required)
 - Copy your API key
 
 5. **Configure environment variables**
+
 ```bash
 cp .env.example .env.local
 # Edit .env.local with your credentials
 ```
 
 6. **Run development server**
+
 ```bash
 npm run dev
 ```
 
 7. **Open browser**
+
 ```
 http://localhost:3000
 ```
@@ -245,6 +267,7 @@ NEXT_PUBLIC_SITE_URL=https://your-app.netlify.app
 ```
 
 **Security Notes:**
+
 - Never commit `.env.local` to Git
 - Use different keys for development/production
 - Rotate keys if exposed
@@ -257,6 +280,7 @@ NEXT_PUBLIC_SITE_URL=https://your-app.netlify.app
 ### **Deploy to Netlify**
 
 1. **Push code to GitHub**
+
 ```bash
 git add .
 git commit -m "Initial commit"
@@ -264,26 +288,31 @@ git push origin main
 ```
 
 2. **Connect to Netlify**
+
 - Go to [netlify.com](https://netlify.com)
 - Click "Add new site" → "Import an existing project"
 - Select your GitHub repository
 
 3. **Configure build settings**
+
 ```
 Build command: npm run build
 Publish directory: .next
 ```
 
 4. **Add environment variables**
+
 - Go to Site settings → Environment variables
 - Add all variables from `.env.local`
 
 5. **Deploy**
+
 - Click "Deploy site"
 - Wait 2-3 minutes for build
 - Your app is live! 🎉
 
 ### **Custom Domain (Optional)**
+
 - Go to Domain settings
 - Add custom domain
 - Update DNS records
@@ -298,30 +327,34 @@ Publish directory: .next
 Send a message to the AI chatbot.
 
 **Request:**
+
 ```typescript
 {
-  message: string // User's message (max 4000 chars)
+  message: string; // User's message (max 4000 chars)
 }
 ```
 
 **Response (Success):**
+
 ```typescript
 {
-  response: string    // AI's response
-  remaining: number   // Remaining requests today
-  model: string       // AI model used
+  response: string; // AI's response
+  remaining: number; // Remaining requests today
+  model: string; // AI model used
 }
 ```
 
 **Response (Rate Limited):**
+
 ```typescript
 {
-  error: string       // Error message
-  remaining: 0        // No requests left
+  error: string; // Error message
+  remaining: 0; // No requests left
 }
 ```
 
 **Status Codes:**
+
 - `200` - Success
 - `401` - Unauthorized (not logged in)
 - `403` - Forbidden (email not verified)
@@ -333,11 +366,12 @@ Send a message to the AI chatbot.
 Get current rate limit status without using a request.
 
 **Response:**
+
 ```typescript
 {
-  used: number        // Requests used today
-  remaining: number   // Requests remaining
-  limit: number       // Daily limit (5)
+  used: number; // Requests used today
+  remaining: number; // Requests remaining
+  limit: number; // Daily limit (5)
 }
 ```
 
@@ -385,12 +419,15 @@ ai-chatbot/
 ## 📸 Screenshots
 
 ### **Landing Page**
+
 ![Landing Page](https://via.placeholder.com/800x400?text=Landing+Page+Screenshot)
 
 ### **Chat Interface**
+
 ![Chat Interface](https://via.placeholder.com/800x400?text=Chat+Interface+Screenshot)
 
 ### **Authentication**
+
 ![Auth Flow](https://via.placeholder.com/800x400?text=Authentication+Screenshot)
 
 ---
@@ -404,6 +441,7 @@ ai-chatbot/
 - **Bundle Size:** <200KB (gzipped)
 
 ### **Optimizations**
+
 - Server-side rendering (SSR)
 - Automatic code splitting
 - Image optimization
@@ -423,6 +461,7 @@ Contributions are welcome! Please follow these steps:
 5. Open a Pull Request
 
 ### **Code Style**
+
 - Follow TypeScript best practices
 - Use meaningful variable names
 - Add comments for complex logic
