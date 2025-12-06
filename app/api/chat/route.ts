@@ -16,7 +16,7 @@ const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
 // - google/gemma-2-9b-it:free (Google's open model)
 // - mistralai/mistral-7b-instruct:free (Good balance)
 
-const FREE_MODEL = "meta-llama/llama-3.2-3b-instruct:free"; // Best free model
+const FREE_MODEL = "google/gemini-2.0-flash-exp:free"; // Best free model
 
 export async function POST(request: Request) {
   try {

@@ -3,7 +3,7 @@
 
 import { createAdminClient } from './supabase/admin'
 
-const DAILY_LIMIT = 5
+const DAILY_LIMIT = 10
 
 export async function checkAndUpdateRateLimit(userId: string): Promise<{
   allowed: boolean
