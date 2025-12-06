@@ -2,14 +2,16 @@
   command = "npm run build"
   publish = ".next"
 
+# Redirect for Next.js SPA deployment
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
 [functions]
-  # Increase timeout for API functions (max 10s on free tier)
-  timeout = 10
+  # Increase timeout (Netlify now requires object syntax)
+  [functions.timeout]
+    duration = 10
 
 [[headers]]
   for = "/*"
