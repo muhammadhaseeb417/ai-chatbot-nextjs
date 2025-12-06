@@ -495,7 +495,7 @@ If you encounter any issues or have questions:
 
 If you found this project helpful, please give it a star! It helps others discover it.
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/ai-chatbot?style=social)](https://github.com/yourusername/ai-chatbot/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/yourusername/ai-chatbot?style=social)](https://github.com/muhammadhaseeb417/ai-chatbot-nextjs)
 
 ---
 
